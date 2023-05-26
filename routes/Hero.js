@@ -1,4 +1,7 @@
 const express = require("express");
-const router = require("express").Router();
+const router = express.Router();
+const ctrl = require("../controllers/heroes");
 
-router.post();
+router.get("/", ctrl.getAllHeroes);
+
+module.exports = { router };

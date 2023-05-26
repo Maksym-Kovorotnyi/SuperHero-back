@@ -1,4 +1,5 @@
-const app = reuire("./app.js");
+const app = require("./app");
+const mongoose = require("mongoose");
 const { DB_HOST, PORT = 3000 } = process.env;
 
 mongoose
@@ -6,7 +7,7 @@ mongoose
   .then(() => {
     app.listen(PORT, () => {
       console.log("Database connection successful");
-      console.log("Server is runing on host:3000");
+      console.log(`Server is runing on host:${PORT}`);
     });
   })
   .catch((error) => {

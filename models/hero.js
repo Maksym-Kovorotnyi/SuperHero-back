@@ -3,25 +3,28 @@ const Joi = require("joi");
 
 // const handleMongooseError = require("../helpers/handleMongooseError");
 
-const heroSchema = new Schema({
-  nickname: {
-    type: String,
-    required: true,
+const heroSchema = new Schema(
+  {
+    nickname: {
+      type: String,
+      required: true,
+    },
+    real_name: {
+      type: String,
+      required: true,
+    },
+    origin_description: {
+      type: String,
+    },
+    catch_phrase: {
+      type: String,
+    },
+    Images: {
+      type: String,
+    },
   },
-  real_name: {
-    type: String,
-    required: true,
-  },
-  origin_description: {
-    type: String,
-  },
-  catch_phrase: {
-    type: String,
-  },
-  Images: {
-    type: String,
-  },
-});
+  { versionKey: false, timestamps: true }
+);
 
 const addSchema = Joi.object({
   nickname: Joi.string().required(),
@@ -32,6 +35,6 @@ const addSchema = Joi.object({
 
 // contactSchema.post("save", handleMongooseError);
 
-const Hero = model("hero", heroSchema);
+const Hero = model("heroCard", heroSchema);
 
 module.exports = { Hero, addSchema };
