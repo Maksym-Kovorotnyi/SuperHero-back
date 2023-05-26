@@ -14,11 +14,11 @@ app.use(express.static("public"));
 
 app.use("/api", heroRouter);
 
-app.use((req, res) => {
+app.use((__, res) => {
   res.status(404).json({ message: "Not found" });
 });
 
-app.use((err, req, res, next) => {
+app.use((err, __, res, next) => {
   console.log(err);
   const message = err.message;
   const code = err.status || 500;

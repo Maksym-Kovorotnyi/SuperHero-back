@@ -19,7 +19,7 @@ const heroSchema = new Schema(
     catch_phrase: {
       type: String,
     },
-    Images: {
+    images: {
       type: String,
     },
   },
@@ -31,10 +31,11 @@ const addSchema = Joi.object({
   real_name: Joi.string().required(),
   origin_description: Joi.string(),
   catch_phrase: Joi.string(),
+  images: Joi.string(),
 });
 
 // contactSchema.post("save", handleMongooseError);
 
-const Hero = model("heroCard", heroSchema);
+const Hero = model("card", heroSchema);
 
 module.exports = { Hero, addSchema };
