@@ -3,7 +3,7 @@ const cors = require("cors");
 const logger = require("morgan");
 const app = express();
 require("dotenv").config();
-const heroRouter = require("./routes");
+const heroRouter = require("./routes/hero");
 
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
 
@@ -12,7 +12,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));
 
-app.use("/", router);
+app.use("/api", heroRouter);
 
 app.use((req, res) => {
   res.status(404).json({ message: "Not found" });

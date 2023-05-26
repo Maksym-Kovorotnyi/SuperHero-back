@@ -7,7 +7,7 @@ mongoose
   .then(() => {
     app.listen(PORT, () => {
       console.log("Database connection successful");
-      console.log(`Server is runing on host:${PORT}`);
+      console.log(`Server is runing on host:3000`);
     });
   })
   .catch((error) => {

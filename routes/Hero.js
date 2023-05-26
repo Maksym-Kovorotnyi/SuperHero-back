@@ -4,4 +4,4 @@ const ctrl = require("../controllers/heroes");
 
 router.get("/", ctrl.getAllHeroes);
 
-module.exports = { router };
+module.exports = router;
