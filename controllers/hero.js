@@ -4,8 +4,8 @@ const { ctrlWrapper } = require("../helpers");
 
 const getAllHeroes = async (req, res) => {
   const result = await Hero.find();
-
-  res.json(result);
+  console.log("hi");
+  res.json({ message: "working" });
 };
 
 module.exports = {

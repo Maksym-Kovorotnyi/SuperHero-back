@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const ctrl = require("../controllers/heroes");
+const ctrl = require("../controllers/hero");
 
 router.get("/", ctrl.getAllHeroes);
 
