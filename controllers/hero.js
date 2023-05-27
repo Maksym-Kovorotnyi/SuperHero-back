@@ -24,15 +24,21 @@ const findHeroById = async (req, res) => {
 };
 
 const addHero = async (req, res) => {
-  const result = await Hero.create(req.body);
-
+  const result = await Hero.create({ ...req.body, images: req.file.path });
   res.status(201).json(result);
 };
 
 const changeHero = async (req, res) => {
   const { id } = req.params;
-
-  const result = await Hero.findByIdAndUpdate(id, req.body, { new: true });
+  let images = " ";
+  if (req.file && req.file.path) {
+    images = req.file.path;
+  }
+  const result = await Hero.findByIdAndUpdate(
+    id,
+    { ...req.body, images },
+    { new: true }
+  );
   if (!result) {
     throw HttpError(404, "There is no such Id");
   }
@@ -47,6 +53,7 @@ const deleteHero = async (req, res) => {
   }
   res.json({ message: "Deleted" });
 };
+
 module.exports = {
   getAllHeroes: ctrlWrapper(getAllHeroes),
   addHero: ctrlWrapper(addHero),

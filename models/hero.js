@@ -1,8 +1,6 @@
 const { Schema, model } = require("mongoose");
 const Joi = require("joi");
 
-// const handleMongooseError = require("../helpers/handleMongooseError");
-
 const heroSchema = new Schema(
   {
     nickname: {
@@ -21,20 +19,19 @@ const heroSchema = new Schema(
     },
     images: {
       type: String,
+      required: true,
     },
   },
   { versionKey: false, timestamps: true }
 );
 
 const addSchema = Joi.object({
-  nickname: Joi.string().required(),
-  real_name: Joi.string().required(),
+  nickname: Joi.string(),
+  real_name: Joi.string(),
   origin_description: Joi.string(),
   catch_phrase: Joi.string(),
   images: Joi.string(),
 });
-
-// contactSchema.post("save", handleMongooseError);
 
 const Hero = model("card", heroSchema);
 
