@@ -17,6 +17,10 @@ const heroSchema = new Schema(
     catch_phrase: {
       type: String,
     },
+    images: {
+      type: String,
+      required: true,
+    },
   },
   { versionKey: false, timestamps: true }
 );
