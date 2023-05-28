@@ -16,9 +16,6 @@ const storage = new CloudinaryStorage({
   params: {
     folder: "heroes",
     allowedFormats: ALLOWED_FORMATS,
-    filename: (req, file, cb) => {
-      cb(null, file.originalname);
-    },
   },
 });
 

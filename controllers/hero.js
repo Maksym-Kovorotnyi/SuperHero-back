@@ -23,7 +23,7 @@ const findHeroById = async (req, res) => {
   res.json(result);
 };
 
-const addHero = async (req, res) => {
+const createHero = async (req, res) => {
   const result = await Hero.create({ ...req.body, images: req.file.path });
   res.status(201).json(result);
 };
@@ -56,7 +56,7 @@ const deleteHero = async (req, res) => {
 
 module.exports = {
   getAllHeroes: ctrlWrapper(getAllHeroes),
-  addHero: ctrlWrapper(addHero),
+  createHero: ctrlWrapper(createHero),
   changeHero: ctrlWrapper(changeHero),
   deleteHero: ctrlWrapper(deleteHero),
   findHeroById: ctrlWrapper(findHeroById),

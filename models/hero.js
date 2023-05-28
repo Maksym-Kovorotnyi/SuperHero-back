@@ -30,6 +30,7 @@ const addSchema = Joi.object({
   real_name: Joi.string(),
   origin_description: Joi.string(),
   catch_phrase: Joi.string(),
+  images: Joi.string(),
 });
 
 const Hero = model("card", heroSchema);
