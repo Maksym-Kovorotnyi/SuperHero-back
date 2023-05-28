@@ -18,17 +18,14 @@ const storage = new CloudinaryStorage({
 
 const multerUploads = multer({
   storage,
-  limits: { fileSize: 3145728 },
 }).single("images");
 
 const handleUpload = (req, res, next) => {
   multerUploads(req, res, (err) => {
     if (err) {
-      if (err.code === "LIMIT_FILE_SIZE") {
-        return res.status(400).json({ error: "File size limit exceeded" });
-      }
       return res.status(400).json({ error: err.message });
     }
+
     next();
   });
 };
