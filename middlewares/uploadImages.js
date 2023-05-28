@@ -24,7 +24,7 @@ const storage = new CloudinaryStorage({
 
 const multerUploads = multer({
   storage,
-}).single("images");
+}).single("image");
 
 const handleUpload = (req, res, next) => {
   multerUploads(req, res, (err) => {

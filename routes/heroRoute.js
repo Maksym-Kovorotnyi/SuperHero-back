@@ -13,7 +13,7 @@ router.get("/", ctrl.getAllHeroes);
 
 router.get("/:id", isvalidId, ctrl.findHeroById);
 
-router.post("/", validateBody(addSchema), multerUploads, ctrl.addHero);
+router.post("/", multerUploads, ctrl.addHero);
 
 router.patch(
   "/:id",
