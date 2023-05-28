@@ -24,16 +24,6 @@ const storage = new CloudinaryStorage({
 
 const multerUploads = multer({
   storage,
-  limits: 3145728,
-  fileFilter: (req, file, cb) => {
-    const allowedFormats = ALLOWED_FORMATS;
-    const fileExtension =
-      file.originalname.split(".")[file.originalname.split(".").length - 1];
-    if (!allowedFormats.includes(fileExtension)) {
-      return cb(new Error("Invalid file format"));
-    }
-    cb(null, true);
-  },
 }).single("images");
 
 const handleUpload = (req, res, next) => {
@@ -47,5 +37,6 @@ const handleUpload = (req, res, next) => {
 };
 
 module.exports = {
+  multerUploads,
   handleUpload,
 };
