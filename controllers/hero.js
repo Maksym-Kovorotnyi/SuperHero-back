@@ -24,7 +24,13 @@ const findHeroById = async (req, res) => {
 };
 
 const createHero = async (req, res) => {
+  if (!req.file || !req.file.path) {
+    throw HttpError(400, "Image is required");
+  }
   const result = await Hero.create({ ...req.body, images: req.file.path });
+  if (!result) {
+    throw HttpError(400, res.body.message);
+  }
   res.status(201).json(result);
 };
 
