@@ -30,8 +30,8 @@ const createHero = async (req, res) => {
 
 const changeHero = async (req, res) => {
   const { id } = req.params;
-  let images = " ";
-  if (req.file && req.file.path) {
+  const { images } = req.body;
+  if (images) {
     images = req.file.path;
   }
   const result = await Hero.findByIdAndUpdate(
