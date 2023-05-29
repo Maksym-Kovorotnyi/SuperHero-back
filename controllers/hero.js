@@ -30,16 +30,23 @@ const createHero = async (req, res) => {
 
 const changeHero = async (req, res) => {
   const { id } = req.params;
-  const { images } = req.body;
-  const result = await Hero.findByIdAndUpdate(
-    id,
-    { ...req.body, images },
-    { new: true }
-  );
-  if (!result) {
-    throw HttpError(404, "There is no such Id");
+  if (req.file?.path) {
+    const result = await Hero.findByIdAndUpdate(
+      id,
+      { ...req.body, images: req.file.path },
+      { new: true }
+    );
+    if (!result) {
+      throw HttpError(404, "There is no such Id");
+    }
+    res.json(result);
+  } else {
+    const result = await Hero.findByIdAndUpdate(id, req.body, { new: true });
+    if (!result) {
+      throw HttpError(404, "There is no such Id");
+    }
+    res.json(result);
   }
-  res.json(result);
 };
 
 const deleteHero = async (req, res) => {
